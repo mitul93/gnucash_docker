@@ -69,6 +69,21 @@ cd gnucash_container
 make run_gnucash
 ```
 
+## Use pre-built docker image
+
+```
+podman pull ghcr.io/mitul93/gnucash_container:latest
+```
+
+## Verifying Container Images using cosign
+
+```
+podman run --rm ghcr.io/sigstore/cosign/cosign:latest \
+  verify ghcr.io/mitul93/gnucash_container:latest \
+  --certificate-identity "https://github.com/mitul93/gnucash_container/.github/workflows/docker-publish-manual.yml@refs/heads/main" \
+  --certificate-oidc-issuer "https://token.actions.githubusercontent.com"
+```
+
 ## Troubleshooting
 
 ### Inconsistency in container run
